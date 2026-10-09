@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#10111a">
+<title>GPT Astra — AI Assistant</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar">
+    <div class="brand"><div class="brand-mark">✦</div><div><b>GPT Astra</b><small>AI assistant</small></div><button class="icon-btn close-sidebar" id="closeSidebar" aria-label="Close menu">×</button></div>
+    <button class="new-chat" id="newChat"><span>＋</span> New chat</button>
+    <div class="side-label">RECENT</div>
+    <div id="chatList" class="chat-list"><div class="side-empty">Sign in to save your chats.</div></div>
+    <div class="sidebar-bottom">
+      <button class="side-action" id="themeToggle"><span>◐</span><span>Switch appearance</span></button>
+      <div class="account" id="accountArea"><div class="avatar">A</div><div class="account-copy"><b>Guest mode</b><small>Sign in to save chats</small></div><button class="subtle-btn" id="openAuth">Sign in</button></div>
+    </div>
+  </aside>
+  <div class="scrim" id="scrim"></div>
+  <main class="main">
+    <header class="topbar"><button class="icon-btn menu-btn" id="menuBtn" aria-label="Open menu">☰</button><div class="top-title">GPT Astra <span class="model-pill"><i></i> AI assistant</span></div><div class="top-actions"><button class="icon-btn" id="topTheme" aria-label="Toggle dark mode">☼</button><button class="outline-btn" id="topAuth">Sign in</button></div></header>
+    <section class="conversation" id="conversation">
+      <div class="welcome" id="welcome">
+        <div class="welcome-orb"><span>✦</span></div>
+        <div class="eyebrow">YOUR PERSONAL AI</div>
+        <h1>Where ideas become<br><span>something extraordinary.</span></h1>
+        <p>Ask questions, explore ideas, understand images, and create something new with GPT Astra.</p>
+        <div class="suggestions">
+          <button class="suggestion" data-prompt="Explain a difficult topic in simple words."><span>✧</span><b>Learn something</b><small>Make complex topics simple</small><span class="suggest-arrow">↗</span></button>
+          <button class="suggestion" data-prompt="Help me brainstorm a creative project."><span>⌘</span><b>Brainstorm ideas</b><small>Turn a spark into a plan</small><span class="suggest-arrow">↗</span></button>
+          <button class="suggestion" data-prompt="Write clean, well-explained code for a simple web app."><span>‹/›</span><b>Build with code</b><small>Debug, explain, and create</small><span class="suggest-arrow">↗</span></button>
+          <button class="suggestion" data-prompt="Help me write a clear and professional message."><span>✎</span><b>Write something</b><small>Find the right words</small><span class="suggest-arrow">↗</span></button>
+        </div>
+      </div>
+      <div class="messages" id="messages" aria-live="polite"></div>
+    </section>
+    <div class="composer-wrap">
+      <div class="attachment-preview" id="attachmentPreview" hidden><span id="attachmentName">Image attached</span><button id="removeImage" aria-label="Remove image">×</button></div>
+      <form class="composer" id="composer">
+        <input type="file" id="imageInput" accept="image/png,image/jpeg,image/webp,image/gif" hidden>
+        <button class="composer-tool" type="button" id="attachBtn" title="Attach an image" aria-label="Attach image">＋</button>
+        <textarea id="prompt" rows="1" maxlength="20000" placeholder="Message GPT Astra..." aria-label="Message GPT Astra"></textarea>
+        <button class="composer-tool mic-btn" type="button" id="voiceBtn" title="Voice input" aria-label="Voice input">♩</button>
+        <button class="send-btn" type="submit" id="sendBtn" aria-label="Send message"><span>↑</span></button>
+      </form>
+      <div class="composer-note"><span>✦</span> GPT Astra can make mistakes. Verify important information.</div>
+    </div>
+  </main>
+</div>
+<div class="modal-backdrop" id="authModal" hidden>
+  <section class="auth-modal" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+    <button class="modal-close" id="closeAuth" aria-label="Close">×</button>
+    <div class="brand-mark modal-mark">✦</div><div class="eyebrow">WELCOME TO ASTRA</div><h2 id="authTitle">Your space for ideas.</h2><p class="auth-intro">Sign in to keep your conversations together.</p>
+    <div class="auth-tabs"><button class="active" data-mode="login">Sign in</button><button data-mode="signup">Create account</button></div>
+    <form id="authForm"><label for="email">Email address</label><input id="email" type="email" autocomplete="email" required placeholder="you@example.com"><label for="password">Password</label><input id="password" type="password" minlength="10" autocomplete="current-password" required placeholder="At least 10 characters"><button class="auth-submit" type="submit" id="authSubmit">Sign in</button><div class="auth-error" id="authError" role="alert"></div></form>
+    <small class="privacy-note">Your password is securely hashed on the server. Never share your password or API key.</small>
+  </section>
+</div>
+<div class="toast" id="toast" role="status"></div>
+<script src="/app.js" defer></script>
+</body>
+</html>
